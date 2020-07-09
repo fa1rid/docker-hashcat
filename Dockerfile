@@ -25,7 +25,7 @@ ENV HASHCAT_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev
+    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev p7zip-full p7zip-rar screen
 
 WORKDIR /root
 
@@ -34,9 +34,9 @@ RUN git clone https://github.com/hashcat/hashcat.git && cd hashcat && git checko
 
 # GET Wordlists
 
-RUN mkdir -p /root/wpa
-WORKDIR /root/wpa
-RUN wget "92.223.93.168/wpa03.p.7z"
-RUN wget "92.223.93.168/wpa02.p.7z"
-RUN wget "92.223.93.168/wpa01.p.7z"
-RUN wget "92.223.93.168/wpa00.p.7z"
+RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh"
+RUN chmod +x script.sh
+RUN ./script.sh
+
+
+
