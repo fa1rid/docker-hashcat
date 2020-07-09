@@ -34,9 +34,10 @@ RUN git clone https://github.com/hashcat/hashcat.git && cd hashcat && git checko
 
 # GET Wordlists
 
-RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh"
+RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh?v1" -O script.sh
 RUN chmod +x script.sh
 RUN ./script.sh
+RUN rm ./script.sh
 
 
 
