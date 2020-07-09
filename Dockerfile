@@ -22,10 +22,6 @@ ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ################################ end nvidia opencl driver ################################
 
 ENV HASHCAT_VERSION        master
-ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.0.2
-ENV HCXDUMPTOOL_VERSION    6.0.6
-ENV HCXKEYS_VERSION        master
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
@@ -35,12 +31,12 @@ WORKDIR /root
 
 RUN git clone https://github.com/hashcat/hashcat.git && cd hashcat && git checkout ${HASHCAT_VERSION} && make install -j4
 
-RUN git clone https://github.com/hashcat/hashcat-utils.git && cd hashcat-utils/src && git checkout ${HASHCAT_UTILS_VERSION} && make
-RUN ln -s /root/hashcat-utils/src/cap2hccapx.bin /usr/bin/cap2hccapx
 
-RUN git clone https://github.com/ZerBea/hcxtools.git && cd hcxtools && git checkout ${HCXTOOLS_VERSION} && make install
+# GET Wordlists
 
-RUN git clone https://github.com/ZerBea/hcxdumptool.git && cd hcxdumptool && git checkout ${HCXDUMPTOOL_VERSION} && make install
-
-RUN git clone https://github.com/hashcat/kwprocessor.git && cd kwprocessor && git checkout ${HCXKEYS_VERSION} && make
-RUN ln -s /root/kwprocessor/kwp /usr/bin/kwp
+RUN mkdir -p /root/wpa
+WORKDIR /root/wpa
+RUN wget "92.223.93.168/wpa03.p.7z"
+RUN wget "92.223.93.168/wpa02.p.7z"
+RUN wget "92.223.93.168/wpa01.p.7z"
+RUN wget "92.223.93.168/wpa00.p.7z"
