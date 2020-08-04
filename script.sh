@@ -3,8 +3,7 @@
 mkdir -p /root/wpa
 cd /root/wpa
 
-wget "92.223.93.168/wpa03.p.7z"
-wget "92.223.93.168/wpa02.p.7z"
-wget "92.223.93.168/wpa01.p.7z"
-wget "92.223.93.168/wpa00.p.7z"
+for i in {01..18}; do curl -JO "95.217.128.40:8000/100/w1.$i.7z"; done
+
+for i in {01..02}; do curl -JO "95.217.128.40:8000/100/w1_21+.$i.7z"; don
 
