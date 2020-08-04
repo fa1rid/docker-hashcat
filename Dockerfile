@@ -27,10 +27,8 @@ ENV HCXTOOLS_VERSION       6.0.2
 ENV HCXDUMPTOOL_VERSION    6.0.6
 ENV HCXKEYS_VERSION        master
 
-# Update & install packages for installing hashcat
-RUN apt-get update && \
-    apt-get install -y wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev p7zip-full p7zip-rar screen
-RUN apt-get install -y htop
+# Install packages for installing hashcat
+RUN apt-get install -y htop wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev p7zip-full p7zip-rar screen
 
 WORKDIR /root
 
@@ -48,7 +46,7 @@ RUN ln -s /root/kwprocessor/kwp /usr/bin/kwp
 
 # GET Wordlists
 
-RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh?v1" -O script.sh
+RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh?v2" -O script.sh
 RUN chmod +x script.sh
 RUN ./script.sh
 RUN rm ./script.sh
