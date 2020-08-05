@@ -20,10 +20,10 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ################################ end nvidia opencl driver ################################
 
-ENV HASHCAT_VERSION        master
+ENV HASHCAT_VERSION        v6.1.1
 ENV HASHCAT_UTILS_VERSION  v1.9
-ENV HCXTOOLS_VERSION       6.0.2
-ENV HCXDUMPTOOL_VERSION    6.0.6
+ENV HCXTOOLS_VERSION       6.1.0
+ENV HCXDUMPTOOL_VERSION    6.1.0
 ENV HCXKEYS_VERSION        master
 
 # Install packages for installing hashcat
@@ -42,6 +42,8 @@ RUN git clone https://github.com/ZerBea/hcxdumptool.git && cd hcxdumptool && git
 
 RUN git clone https://github.com/hashcat/kwprocessor.git && cd kwprocessor && git checkout ${HCXKEYS_VERSION} && make
 RUN ln -s /root/kwprocessor/kwp /usr/bin/kwp
+
+RUN curl -OJL "https://github.com/Cynosureprime/rling/raw/master/rling" && chmod +x rling && mv rling /bin/
 
 # GET Wordlists
 
