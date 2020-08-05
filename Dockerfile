@@ -47,7 +47,7 @@ RUN curl -OJL "https://github.com/Cynosureprime/rling/raw/master/rling" && chmod
 
 # GET Wordlists
 
-RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh?v2" -O script.sh
+RUN wget "https://raw.githubusercontent.com/fa1rid/docker-hashcat/master/script.sh?v3" -O script.sh
 RUN chmod +x script.sh
 RUN ./script.sh
 RUN rm ./script.sh
