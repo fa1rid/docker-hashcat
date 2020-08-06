@@ -11,6 +11,7 @@ ENV HCXDUMPTOOL_VERSION    6.1.0
 ENV HCXKEYS_VERSION        master
 
 # Install packages for installing hashcat
+RUN apt-get update
 RUN apt-get install -y curl htop wget make clinfo build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev libcurl4-openssl-dev libssl-dev p7zip-full p7zip-rar screen
 
 WORKDIR /root
